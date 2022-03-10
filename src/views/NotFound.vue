@@ -6,11 +6,11 @@
     <h4>
     PAGE NOT FOUND
     </h4>
-    <a
-      href="#"
+    <router-link
+      to="/checkout"
       class="not-found_btn"
     >
       HOME PAGE
-    </a>
+    </router-link>
   </div>
 </template>
