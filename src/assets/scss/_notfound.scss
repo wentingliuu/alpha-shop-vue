@@ -1,0 +1,32 @@
+.not-found {
+  background: var(--body-bg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color: var(--body-color);
+    display: inline-block;
+    font-size: 150px;
+  }
+  h4 {
+    color: var(--body-color);
+    display: inline-block;
+    font-size: 35px;
+    margin-top: 50px;
+  }
+  &_btn {
+    border: 1px solid var(--btn-next-bg);
+    border-radius: 7px;
+    padding: 7px;
+    margin-top: 30px;
+  }
+  a {
+    color: var(--btn-next-bg);
+  }
+}
