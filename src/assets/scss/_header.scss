@@ -61,6 +61,10 @@ header {
         line-height: 72px;
         opacity: 0;
 
+        .nav__link {
+          color: var(--body-color);
+        }
+
         &::after {
           position: absolute;
           bottom: 0;
