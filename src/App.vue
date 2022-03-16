@@ -1,11 +1,9 @@
 <template>
   <div id="alpha-shop-vue">
     <Header />
-    <hr>
     <main>
       <router-view />
     </main>
-    <hr>
     <Footer />
   </div>
 </template>
