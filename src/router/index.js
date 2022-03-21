@@ -9,12 +9,29 @@ const routes = [
   {
     path: '/',
     name: 'root',
-    redirect: '/checkout'
+    redirect: '/checkout/1'
   },
   {
     path: '/checkout',
     name: 'check-out',
-    component: Checkout
+    component: Checkout,
+    children: [
+      {
+        path: '1',
+        name: '1',
+        component: () => import('../components/FormOne.vue')
+      },
+      {
+        path: '2',
+        name: '2',
+        component: () => import('../components/FormTwo.vue')
+      },
+      {
+        path: '3',
+        name: '3',
+        component: () => import('../components/FormThree.vue')
+      }
+    ]
   },
   {
     path: '*',

@@ -128,84 +128,74 @@
       }
     }
   }
+}
 
-  /* form row 排版 */
-  &:nth-of-type(1) {
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    grid-column-gap: 30px;
+/* form row 排版 */
+.part__one {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  grid-column-gap: 30px;
 
-    .form__title,
-    .form__row--phone,
-    .form__row--email,
-    .form__row--city,
-    .form__row--address {
-      grid-column: 1 / 3;
-    }
+  .form__title,
+  .form__row--phone,
+  .form__row--email,
+  .form__row--city,
+  .form__row--address {
+    grid-column: 1 / 3;
   }
-  &:nth-of-type(3) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 30px;
+}
+.part__three {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
 
-    .form__row--payname,
-    .form__row--paycard {
-      grid-column: 1 / 3;
-    }
-  }
-
-  &.d-none {
-    display: none;
+  .form__row--payname,
+  .form__row--paycard {
+    grid-column: 1 / 3;
   }
 }
 
 @media screen and (min-width: 768px) {
-  .form__part {
-    &:nth-of-type(1) {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-column-gap: 30px;
+  .part__one {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 30px;
 
-      .form__title {
-        grid-column: 1 / 7;
-      }
-      .form__row--gender,
-      .form__row--city {
-        grid-column: 1 / 3;
-      }
-      .form__row--name,
-      .form__row--address {
-        grid-column: 3 / 7;
-      }
-      .form__row--phone {
-        grid-column: 1 / 4;
-      }
-      .form__row--email {
-        grid-column: 4 / 7;
-      }
+    .form__title {
+      grid-column: 1 / 7;
     }
-    &:nth-of-type(3) {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      grid-column-gap: 30px;
-
-      .form__title {
-        grid-column: 1 / 7;
-      }
-      .form__row--payname,
-      .form__row--paycard {
-        grid-column: 1 / 5;
-      }
-      .form__row--payexp {
-        grid-column: 1 / 4;
-      }
-      .form__row--paycode {
-        grid-column: 4 / 7;
-      }
+    .form__row--gender,
+    .form__row--city {
+      grid-column: 1 / 3;
     }
+    .form__row--name,
+    .form__row--address {
+      grid-column: 3 / 7;
+    }
+    .form__row--phone {
+      grid-column: 1 / 4;
+    }
+    .form__row--email {
+      grid-column: 4 / 7;
+    }
+  }
+  .part__three {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 30px;
 
-    &.d-none {
-      display: none;
+    .form__title {
+      grid-column: 1 / 7;
+    }
+    .form__row--payname,
+    .form__row--paycard {
+      grid-column: 1 / 5;
+    }
+    .form__row--payexp {
+      grid-column: 1 / 4;
+    }
+    .form__row--paycode {
+      grid-column: 4 / 7;
     }
   }
 }
