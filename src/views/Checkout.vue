@@ -29,17 +29,24 @@
             </div>
           </form>
       </div>
+
+      <!-- right part-->
+      <div class="main__content__right">
+        <Cart />
+      </div>
     </section>
   </div>
 </template>
 
 <script>
 import Stepper from '../components/Stepper'
+import Cart from '../components/Cart'
 
 export default {
   name: 'Checkout',
   components: {
-    Stepper
+    Stepper,
+    Cart
   },
   data() {
     return {
