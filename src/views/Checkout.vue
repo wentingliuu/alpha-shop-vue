@@ -62,6 +62,7 @@
 <script>
 import Stepper from '../components/Stepper'
 import Cart from '../components/Cart'
+import { mapState } from 'vuex'
 
 export default {
   name: 'Checkout',
@@ -71,7 +72,6 @@ export default {
   },
   data() {
     return {
-      currentStep: Number(this.$route.name),
       userInfo: {
         gender: '先生',
         name: '',
@@ -104,6 +104,9 @@ export default {
       totalAmount: 5298
     }
   },
+  computed: {
+    ...mapState(['currentStep'])
+  },
   created() {
     this.shippingFee = Number(JSON.parse(localStorage.getItem('shippingFee'))) || 0
     this.totalAmount = Number(JSON.parse(localStorage.getItem('totalAmount'))) || 5298
@@ -112,12 +115,10 @@ export default {
   },
   methods: {
     nextStep() {
-      this.currentStep++
-      this.$router.push({ name: this.currentStep})
+      this.$router.push({ name: this.currentStep +1 })
     },
     prevStep() {
-      this.currentStep--
-      this.$router.push({ name: this.currentStep})
+      this.$router.push({ name: this.currentStep -1 })
     },
     submitForm() {
       console.log(this.userInfo)

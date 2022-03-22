@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Checkout from '../views/Checkout.vue'
 import NotFound from '../views/NotFound.vue'
+import store from './../store'
 
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ const routes = [
 
 const router = new Router({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  store.commit('setCurrentStep', Number(to.name))
+  next()
 })
 
 export default router
