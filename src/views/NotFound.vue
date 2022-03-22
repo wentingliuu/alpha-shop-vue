@@ -7,7 +7,7 @@
     PAGE NOT FOUND
     </h4>
     <router-link
-      to="/checkout"
+      to="/"
       class="not-found_btn"
     >
       HOME PAGE

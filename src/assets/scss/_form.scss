@@ -33,7 +33,7 @@
     }
     input {
       &::placeholder {
-        color: var(--form-input-content);
+        color: var(--form-input-placeholder);
       }
     }
     select {

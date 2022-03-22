@@ -104,6 +104,12 @@ export default {
       totalAmount: 5298
     }
   },
+  created() {
+    this.shippingFee = Number(JSON.parse(localStorage.getItem('shippingFee'))) || 0
+    this.totalAmount = Number(JSON.parse(localStorage.getItem('totalAmount'))) || 5298
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
+    this.products = JSON.parse(localStorage.getItem('products'))
+  },
   methods: {
     nextStep() {
       this.currentStep++
@@ -150,6 +156,30 @@ export default {
     },
     changeTotalAmount(payload) {
       this.totalAmount = Number(payload)
+    }
+  },
+  watch: {
+    shippingFee: {
+      handler: function () {
+        localStorage.setItem('shippingFee', JSON.stringify(this.shippingFee))
+      }
+    },
+    totalAmount: {
+      handler: function () {
+        localStorage.setItem('totalAmount', JSON.stringify(this.totalAmount))
+      }
+    },
+    userInfo: {
+      handler: function () {
+        localStorage.setItem('userInfo', JSON.stringify(this.userInfo))
+      },
+      deep: true
+    },
+    products: {
+      handler: function () {
+        localStorage.setItem('products', JSON.stringify(this.products))
+      },
+      deep: true
     }
   }
 }
