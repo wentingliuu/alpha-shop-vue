@@ -5,8 +5,8 @@
       <label for="gender">稱謂</label>
       <div class="select-wrapper">
         <select v-model="userInfo.gender" name="gender" id="gender" required>
-          <option value="male">先生</option>
-          <option value="female">小姐</option>
+          <option value="先生">先生</option>
+          <option value="小姐">小姐</option>
         </select>
       </div>
     </div>
@@ -16,11 +16,11 @@
     </div>
     <div class="form__row--phone">
       <label for="phone">電話</label>
-      <input v-model="userInfo.phone" name="phone" id="phone" type="text" placeholder="請輸入行動電話">
+      <input v-model="userInfo.phone" name="phone" id="phone" type="number" placeholder="請輸入行動電話">
     </div>
     <div class="form__row--email">
       <label for="email">Email</label>
-      <input v-model="userInfo.email" name="email" id="email" type="text" placeholder="請輸入電子郵件">
+      <input v-model="userInfo.email" name="email" id="email" type="email" placeholder="請輸入電子郵件">
     </div>
     <div class="form__row--city">
       <label for="city">縣市</label>
