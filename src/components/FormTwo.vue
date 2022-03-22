@@ -2,7 +2,13 @@
   <div class="form__part part__two">
     <h2 class="form__title">運送方式</h2>
     <div class="form__row--shipping">
-      <input v-model="userInfo.shipping" type="radio" data-fee="0" name="shipping__type" value="0" id="standard">
+      <input 
+        v-model="shippingFee" 
+        value="0"
+        type="radio" 
+        name="shipping__type"
+        id="standard"
+      >
       <label for="standard">
         <div class="shipping__des">
           <span class="shipping__subtitle">標準運送</span>
@@ -12,7 +18,13 @@
       </label>
     </div>
     <div class="form__row--shipping">
-      <input v-model="userInfo.shipping" type="radio" data-fee="500" name="shipping__type" value="500" id="express">
+      <input
+        v-model="shippingFee"
+        value="500"
+        type="radio"
+        name="shipping__type"
+        id="express"
+      >
       <label for="express">
         <div class="shipping__des">
           <span class="shipping__subtitle">DHL 貨運</span>
@@ -28,16 +40,19 @@
 export default {
   name: 'FormTwo',
   props: {
-    initialUserInfo: {
-      type: Object,
-      default: () => ({
-        shipping: ''
-      })
+    initialShippingFee: {
+      type: Number,
+      required: true
     }
   },
   data() {
     return {
-      userInfo: this.initialUserInfo
+      shippingFee: this.initialShippingFee
+    }
+  },
+  watch: {
+    shippingFee() {
+      this.$emit('change-shipping-fee', this.shippingFee)
     }
   }
 }

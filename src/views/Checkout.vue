@@ -13,6 +13,8 @@
           <div class="form__content">
             <router-view
               :initial-user-info="userInfo"
+              :initial-shipping-fee="shippingFee"
+              @change-shipping-fee="changeShippingFee"
             />
           </div>
       
@@ -34,8 +36,8 @@
               下一步<span class="arrow">&longrightarrow;</span>
             </button>
             <button
-              @click.prevent.stop="submitForm"
               v-else-if="currentStep === 3"
+              @click.prevent.stop="submitForm"
               class="form__btn--next"
             >
               確認下單
@@ -46,7 +48,12 @@
 
       <!-- right part-->
       <div class="main__content__right">
-        <Cart />
+        <Cart 
+          :initial-products="products"
+          :shipping-fee="shippingFee"
+          :initial-total-amount="totalAmount"
+          @change-total-amount="changeTotalAmount"
+        />
       </div>
     </section>
   </div>
@@ -71,33 +78,40 @@ export default {
         phone: '',
         email: '',
         city: '',
-        address: '',
-        shipping: '0',
+        address: '', 
         payname: '',
         paycard: '',
         payexp: '',
         paycode: ''
-      }
+      },
+      products: [
+        {
+          id: 1,
+          name: '破壞補丁修身牛仔褲',
+          img: require('../assets/images/product-1@3x.png'),
+          price: 3999,
+          quantity: 1
+        },
+        {
+          id: 2,
+          name: '刷色直筒牛仔褲',
+          img: require('../assets/images/product-2@3x.png'),
+          price: 1299,
+          quantity: 1
+        }
+      ],
+      shippingFee: 0,
+      totalAmount: 5298
     }
   },
   methods: {
     nextStep() {
-      if (this.currentStep === 1) {
-        this.$router.push({ name: '2' })
-      }
-      if (this.currentStep === 2) {
-        this.$router.push({ name: '3' })
-      }
       this.currentStep++
+      this.$router.push({ name: this.currentStep})
     },
     prevStep() {
-      if (this.currentStep === 3) {
-        this.$router.push({ name: '2' })
-      }
-      if (this.currentStep === 2) {
-        this.$router.push({ name: '1' })
-      }
       this.currentStep--
+      this.$router.push({ name: this.currentStep})
     },
     submitForm() {
       console.log(this.userInfo)
@@ -105,7 +119,7 @@ export default {
       this.$swal.fire({
         title: '訂單已送出！',
         text: `${this.userInfo.name} ${this.userInfo.gender} 感謝您的消費，
-        本次結帳金額為 OOO 元！`,
+        本次結帳金額為 ${this.totalAmount} 元！`,
         icon: 'success',
         confirmButtonColor: '#F67599',
         confirmButtonText: '回首頁'
@@ -120,13 +134,22 @@ export default {
           email: '',
           city: '',
           address: '',
-          shipping: '0',
           payname: '',
           paycard: '',
           payexp: '',
           paycode: ''
         }
+        this.shippingFee = 0
+        this.products.map(product => {
+          product.quantity = 1
+        })
       })
+    },
+    changeShippingFee(payload) {
+      this.shippingFee = Number(payload)
+    },
+    changeTotalAmount(payload) {
+      this.totalAmount = Number(payload)
     }
   }
 }
