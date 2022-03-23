@@ -110,7 +110,18 @@ export default {
   created() {
     this.shippingFee = Number(JSON.parse(localStorage.getItem('shippingFee'))) || 0
     this.totalAmount = Number(JSON.parse(localStorage.getItem('totalAmount'))) || 5298
-    this.userInfo = JSON.parse(localStorage.getItem('userInfo')) || {}
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo')) ? JSON.parse(localStorage.getItem('userInfo')) :  {
+        gender: '先生',
+        name: '',
+        phone: '',
+        email: '',
+        city: '',
+        address: '', 
+        payname: '',
+        paycard: '',
+        payexp: '',
+        paycode: ''
+      }
     this.products = JSON.parse(localStorage.getItem('products')) || []
   },
   methods: {
