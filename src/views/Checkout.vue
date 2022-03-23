@@ -115,14 +115,8 @@ export default {
       console.log('fetchLocalStorage')
       this.shippingFee = Number(JSON.parse(localStorage.getItem('shippingFee'))) || 0
       this.totalAmount = Number(JSON.parse(localStorage.getItem('totalAmount'))) || 5298
-      this.userInfo = {
-        ...this.userInfo,
-        ...JSON.parse(localStorage.getItem('userInfo'))
-      }
-      if(JSON.parse(localStorage.getItem('products'))) {
-        console.log('parse products')
-        this.products = JSON.parse(localStorage.getItem('products'))
-      }
+      this.userInfo = JSON.parse(localStorage.getItem('userInfo')) || this.userInfo
+      this.products = JSON.parse(localStorage.getItem('products')) || this.products
     },
     nextStep() {
       this.$router.push({ name: this.currentStep +1 })
