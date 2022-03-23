@@ -112,6 +112,7 @@ export default {
   },
   methods: {
     fetchLocalStorage() {
+      console.log('fetchLocalStorage')
       this.shippingFee = Number(JSON.parse(localStorage.getItem('shippingFee'))) || 0
       this.totalAmount = Number(JSON.parse(localStorage.getItem('totalAmount'))) || 5298
       this.userInfo = {
@@ -119,6 +120,7 @@ export default {
         ...JSON.parse(localStorage.getItem('userInfo'))
       }
       if(JSON.parse(localStorage.getItem('products'))) {
+        console.log('parse products')
         this.products = JSON.parse(localStorage.getItem('products'))
       }
     },
