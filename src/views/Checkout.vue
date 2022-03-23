@@ -110,8 +110,34 @@ export default {
   created() {
     this.shippingFee = Number(JSON.parse(localStorage.getItem('shippingFee'))) || 0
     this.totalAmount = Number(JSON.parse(localStorage.getItem('totalAmount'))) || 5298
-    this.userInfo = JSON.parse(localStorage.getItem('userInfo'))
-    this.products = JSON.parse(localStorage.getItem('products'))
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo')) || {
+        gender: '先生',
+        name: '',
+        phone: '',
+        email: '',
+        city: '',
+        address: '', 
+        payname: '',
+        paycard: '',
+        payexp: '',
+        paycode: ''
+      }
+    this.products = JSON.parse(localStorage.getItem('products')) || [
+        {
+          id: 1,
+          name: '破壞補丁修身牛仔褲',
+          img: require('../assets/images/product-1@3x.png'),
+          price: 3999,
+          quantity: 1
+        },
+        {
+          id: 2,
+          name: '刷色直筒牛仔褲',
+          img: require('../assets/images/product-2@3x.png'),
+          price: 1299,
+          quantity: 1
+        }
+      ]
   },
   methods: {
     nextStep() {
